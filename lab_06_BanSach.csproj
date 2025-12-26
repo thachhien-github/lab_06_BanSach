@@ -67,12 +67,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Admin\ChiTietDonHang.aspx" />
-    <Content Include="Admin\Dashboard.aspx" />
-    <Content Include="Admin\QuanLyDonHang.aspx" />
-    <Content Include="Admin\QuanLyKhachHang.aspx" />
-    <Content Include="Admin\QuanLySach.aspx" />
-    <Content Include="Admin\QuanLySach_Edit.aspx" />
     <Content Include="Bia_sach\101Cakhuc.jpg" />
     <Content Include="Bia_sach\aloVietnam.jpg" />
     <Content Include="Bia_sach\caosuvietnam.jpg" />
@@ -125,55 +119,6 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Admin\Admin.Master.cs">
-      <DependentUpon>Admin.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\Admin.Master.designer.cs">
-      <DependentUpon>Admin.Master</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\ChiTietDonHang.aspx.cs">
-      <DependentUpon>ChiTietDonHang.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\ChiTietDonHang.aspx.designer.cs">
-      <DependentUpon>ChiTietDonHang.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\Dashboard.aspx.cs">
-      <DependentUpon>Dashboard.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\Dashboard.aspx.designer.cs">
-      <DependentUpon>Dashboard.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\QuanLyDonHang.aspx.cs">
-      <DependentUpon>QuanLyDonHang.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\QuanLyDonHang.aspx.designer.cs">
-      <DependentUpon>QuanLyDonHang.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\QuanLyKhachHang.aspx.cs">
-      <DependentUpon>QuanLyKhachHang.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\QuanLyKhachHang.aspx.designer.cs">
-      <DependentUpon>QuanLyKhachHang.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\QuanLySach.aspx.cs">
-      <DependentUpon>QuanLySach.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\QuanLySach.aspx.designer.cs">
-      <DependentUpon>QuanLySach.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\QuanLySach_Edit.aspx.cs">
-      <DependentUpon>QuanLySach_Edit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\QuanLySach_Edit.aspx.designer.cs">
-      <DependentUpon>QuanLySach_Edit.aspx</DependentUpon>
-    </Compile>
     <Compile Include="ChiTietDonHang.aspx.cs">
       <DependentUpon>ChiTietDonHang.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -258,7 +203,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bia_sach\Thumbs.db" />
-    <Content Include="Admin\Admin.Master" />
     <None Include="packages.config" />
     <Content Include="Site.Master" />
     <None Include="Web.Debug.config">
