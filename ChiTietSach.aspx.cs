@@ -61,9 +61,66 @@ namespace lab_06_BanSach
 
         protected void btnAddToCart_Click(object sender, EventArgs e)
         {
-            string maSach = ((LinkButton)sender).CommandArgument;
-            // Tạm thời thông báo, sẽ tích hợp Session GioHang sau
-            Response.Write("<script>alert('Đã thêm " + maSach + " vào giỏ hàng!');</script>");
+            // 1. Lấy MaSach từ CommandArgument của nút được nhấn
+            int maSach = int.Parse(((LinkButton)sender).CommandArgument);
+
+            // 2. Lấy hoặc Khởi tạo Giỏ hàng (DataTable) từ Session
+            DataTable dt;
+            if (Session["GioHang"] == null)
+            {
+                dt = new DataTable();
+                dt.Columns.Add("MaSach", typeof(int));
+                dt.Columns.Add("TenSach", typeof(string));
+                dt.Columns.Add("AnhBia", typeof(string));
+                dt.Columns.Add("Dongia", typeof(decimal));
+                dt.Columns.Add("SoLuong", typeof(int));
+                dt.Columns.Add("ThanhTien", typeof(decimal));
+            }
+            else
+            {
+                dt = (DataTable)Session["GioHang"];
+            }
+
+            // 3. Kiểm tra xem sách này đã có trong giỏ chưa
+            bool isExist = false;
+            foreach (DataRow row in dt.Rows)
+            {
+                if ((int)row["MaSach"] == maSach)
+                {
+                    row["SoLuong"] = (int)row["SoLuong"] + 1;
+                    row["ThanhTien"] = (int)row["SoLuong"] * (decimal)row["Dongia"];
+                    isExist = true;
+                    break;
+                }
+            }
+
+            // 4. Nếu chưa có thì lấy thông tin từ DB và thêm dòng mới
+            if (!isExist)
+            {
+                using (SqlConnection con = new SqlConnection(strCon))
+                {
+                    string sql = "SELECT TenSach, AnhBia, Dongia FROM Sach WHERE MaSach = @MaSach";
+                    SqlCommand cmd = new SqlCommand(sql, con);
+                    cmd.Parameters.AddWithValue("@MaSach", maSach);
+                    con.Open();
+                    SqlDataReader dr = cmd.ExecuteReader();
+                    if (dr.Read())
+                    {
+                        DataRow nr = dt.NewRow();
+                        nr["MaSach"] = maSach;
+                        nr["TenSach"] = dr["TenSach"];
+                        nr["AnhBia"] = dr["AnhBia"];
+                        nr["Dongia"] = dr["Dongia"];
+                        nr["SoLuong"] = 1;
+                        nr["ThanhTien"] = dr["Dongia"];
+                        dt.Rows.Add(nr);
+                    }
+                }
+            }
+
+            // 5. Lưu giỏ hàng vào Session và chuyển hướng sang trang Giỏ hàng
+            Session["GioHang"] = dt;
+            //Response.Redirect("GioHang.aspx");
         }
     }
 }
