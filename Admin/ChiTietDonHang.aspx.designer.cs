@@ -11,88 +11,79 @@ namespace lab_06_BanSach.Admin
 {
 
 
-    public partial class Dashboard
+    public partial class ChiTietDonHang
     {
 
         /// <summary>
-        /// txtTuNgay control.
+        /// lblMaDH control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTuNgay;
+        protected global::System.Web.UI.WebControls.Label lblMaDH;
 
         /// <summary>
-        /// txtDenNgay control.
+        /// lblTenKH control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDenNgay;
+        protected global::System.Web.UI.WebControls.Label lblTenKH;
 
         /// <summary>
-        /// btnLoc control.
+        /// lblSDT control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnLoc;
+        protected global::System.Web.UI.WebControls.Label lblSDT;
 
         /// <summary>
-        /// btnExportExcel control.
+        /// lblDiaChi control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnExportExcel;
+        protected global::System.Web.UI.WebControls.Label lblDiaChi;
 
         /// <summary>
-        /// ltrDoanhThu control.
+        /// btnXacNhan control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal ltrDoanhThu;
+        protected global::System.Web.UI.WebControls.Button btnXacNhan;
 
         /// <summary>
-        /// ltrDonHang control.
+        /// gvChiTiet control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal ltrDonHang;
+        protected global::System.Web.UI.WebControls.GridView gvChiTiet;
 
         /// <summary>
-        /// ltrKhachHang control.
+        /// lblTamTinh control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal ltrKhachHang;
+        protected global::System.Web.UI.WebControls.Label lblTamTinh;
 
         /// <summary>
-        /// ltrTongSach control.
+        /// lblTongTien control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal ltrTongSach;
-
-        /// <summary>
-        /// gvMoiNhat control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvMoiNhat;
+        protected global::System.Web.UI.WebControls.Label lblTongTien;
     }
 }

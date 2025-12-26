@@ -24,7 +24,6 @@ namespace lab_06_BanSach
             using (SqlConnection con = new SqlConnection(strCon))
             {
                 string keyword = Request.QueryString["search"];
-                // Lấy toàn bộ dữ liệu khớp với search để PagedDataSource tự chia trang
                 string sql = "SELECT MaSach, TenSach, AnhBia, Dongia FROM Sach " +
                              "WHERE (@TenSach IS NULL OR TenSach LIKE '%' + @TenSach + '%') " +
                              "ORDER BY Ngaycapnhat DESC";
@@ -40,14 +39,16 @@ namespace lab_06_BanSach
                 PagedDataSource pds = new PagedDataSource();
                 pds.DataSource = dt.DefaultView;
                 pds.AllowPaging = true;
-                pds.PageSize = 6; // Hiện 6 cuốn 1 trang
+
+                // --- CHỈNH SỬA DÒNG NÀY ---
+                pds.PageSize = 20; // Đổi từ 6 thành 20 cuốn 1 trang
+                                   // --------------------------
+
                 pds.CurrentPageIndex = pageIndex;
 
-                // Bind vào Repeater chính
                 Repeater1.DataSource = pds;
                 Repeater1.DataBind();
 
-                // Tạo thanh số trang
                 GeneratePager(pds.PageCount, pageIndex);
             }
         }

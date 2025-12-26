@@ -11,7 +11,7 @@ namespace lab_06_BanSach.Admin
 {
 
 
-    public partial class QuanLySach
+    public partial class QuanLyKhachHang
     {
 
         /// <summary>
@@ -24,39 +24,21 @@ namespace lab_06_BanSach.Admin
         protected global::System.Web.UI.WebControls.TextBox txtSearch;
 
         /// <summary>
-        /// ddlChuDe control.
+        /// btnSearch control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlChuDe;
+        protected global::System.Web.UI.WebControls.Button btnSearch;
 
         /// <summary>
-        /// ddlNXB control.
+        /// gvKhachHang control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlNXB;
-
-        /// <summary>
-        /// btnFilter control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnFilter;
-
-        /// <summary>
-        /// gvSach control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvSach;
+        protected global::System.Web.UI.WebControls.GridView gvKhachHang;
     }
 }

@@ -33,15 +33,6 @@ namespace lab_06_BanSach.Admin
         protected global::System.Web.UI.WebControls.TextBox txtTenSach;
 
         /// <summary>
-        /// txtGiaBan control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtGiaBan;
-
-        /// <summary>
         /// ddlChuDe control.
         /// </summary>
         /// <remarks>
@@ -69,13 +60,13 @@ namespace lab_06_BanSach.Admin
         protected global::System.Web.UI.WebControls.TextBox txtMoTa;
 
         /// <summary>
-        /// fuAnhBia control.
+        /// txtGiaBan control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload fuAnhBia;
+        protected global::System.Web.UI.WebControls.TextBox txtGiaBan;
 
         /// <summary>
         /// imgHienTai control.
@@ -94,6 +85,15 @@ namespace lab_06_BanSach.Admin
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField hfAnhCu;
+
+        /// <summary>
+        /// fuAnhBia control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload fuAnhBia;
 
         /// <summary>
         /// btnSave control.

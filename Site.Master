@@ -11,69 +11,169 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
     <style>
+        /* 1. Tổng quan & Font chữ */
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f8f9fa;
+            background-color: #f4f7f6; /* Màu nền xám xanh nhẹ cho dịu mắt */
+            color: #333;
         }
 
+        /* 2. Navbar nâng cao */
         .navbar-custom {
-            background-color: #2c3e50;
-            border-bottom: 4px solid #F98189;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            background: linear-gradient(135deg, #1a2a6c, #2c3e50); /* Gradient chuyên nghiệp */
+            border-bottom: 3px solid #ff7e5f;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            padding: 0.8rem 0;
         }
 
         .navbar-brand {
-            font-size: 1.5rem;
-            letter-spacing: 1px;
+            font-size: 1.6rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: transform 0.3s ease;
         }
 
-        /* Badge giỏ hàng chuẩn */
+            .navbar-brand:hover {
+                transform: scale(1.05);
+            }
+
+        .nav-link {
+            font-weight: 500;
+            transition: color 0.3s ease;
+            padding: 0.5rem 1rem !important;
+        }
+
+            .nav-link:hover {
+                color: #ff7e5f !important; /* Màu Coral khi hover */
+            }
+
+        /* 3. Dropdown Menu tinh tế */
+        .dropdown-menu {
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .dropdown-item {
+            padding: 10px 20px;
+            transition: all 0.2s;
+        }
+
+            .dropdown-item:hover {
+                background-color: #fff5f2;
+                color: #ff7e5f;
+                padding-left: 25px; /* Hiệu ứng đẩy sang phải khi hover */
+            }
+
+        /* 4. Search Box & Input */
+        .search-box {
+            background: rgba(255,255,255,0.1);
+            border-radius: 50px;
+            padding: 2px;
+            transition: all 0.3s;
+        }
+
+            .search-box:focus-within {
+                background: rgba(255,255,255,0.2);
+                box-shadow: 0 0 0 3px rgba(255, 126, 95, 0.3);
+            }
+
+            .search-box .form-control {
+                background: transparent;
+                border: none;
+                color: white;
+                padding-left: 15px;
+            }
+
+                .search-box .form-control::placeholder {
+                    color: #bdc3c7;
+                }
+
+            .search-box .btn-danger {
+                border-radius: 50px !important;
+                background-color: #ff7e5f;
+                border: none;
+            }
+
+        /* 5. Giỏ hàng Badge */
         .cart-badge {
-            background-color: #F98189;
+            background: #ff4757;
             color: white;
+            font-weight: bold;
+            min-width: 18px;
+            height: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             border-radius: 50%;
-            padding: 3px 7px;
             font-size: 10px;
             position: absolute;
-            top: 0;
-            right: 0;
-            transform: translate(30%, -30%);
+            top: 2px;
+            right: 4px;
             border: 2px solid #2c3e50;
         }
 
-        /* Search box linh hoạt */
-        .search-box {
-            min-width: 180px;
-            max-width: 300px;
+        /* 6. Nút Đăng nhập & User Profile */
+        .btn-outline-warning {
+            border: 2px solid #ffce54;
+            color: #ffce54;
+            font-weight: 600;
+            transition: all 0.3s;
         }
 
-        .form-control:focus {
-            box-shadow: none;
-            border-color: #F98189;
+            .btn-outline-warning:hover {
+                background-color: #ffce54;
+                color: #2c3e50;
+                box-shadow: 0 4px 10px rgba(255, 206, 84, 0.4);
+            }
+
+        /* 7. Footer hiện đại */
+        .footer {
+            background: #ffffff;
+            border-top: 1px solid #eee;
+            padding: 40px 0;
         }
 
-        /* Chống xuống hàng cho text */
+        .footer-social a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            background: #f8f9fa;
+            border-radius: 50%;
+            color: #555;
+            margin: 0 8px;
+            transition: all 0.3s;
+        }
+
+            .footer-social a:hover {
+                background: #ff7e5f;
+                color: white;
+                transform: translateY(-3px);
+            }
+
+        /* 8. Utility */
         .text-nowrap {
             white-space: nowrap !important;
         }
 
-        .footer {
-            background: #fff;
-            padding: 30px 0;
-            margin-top: 50px;
-            border-top: 1px solid #dee2e6;
+        .min-vh-100 {
+            min-height: 80vh !important;
         }
-
-        .footer-social a {
-            color: #6c757d;
-            margin: 0 10px;
-            font-size: 1.2rem;
-            transition: 0.3s;
-        }
-
-            .footer-social a:hover {
-                color: #F98189;
-            }
+        /* Điều chỉnh để footer không bị dính */
     </style>
     <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
 </head>
