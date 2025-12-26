@@ -156,6 +156,18 @@
                                         <li>
                                             <hr class="dropdown-divider">
                                         </li>
+                                        <%-- Chèn đoạn này vào TRƯỚC nút Đăng xuất trong Site.Master --%>
+                                        <% if (Session["TenDN"] != null && Session["TenDN"].ToString().ToLower() == "admin")
+                                            { %>
+                                        <li>
+                                            <a class="dropdown-item py-2 text-primary fw-bold" href="Admin/Dashboard.aspx">
+                                                <i class="fas fa-user-shield me-2"></i>Quản trị hệ thống
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <hr class="dropdown-divider">
+                                        </li>
+                                        <% } %>
                                         <li>
                                             <asp:LinkButton ID="lbtnLogout" runat="server" CssClass="dropdown-item py-2 text-danger" OnClick="lbtnLogout_Click">
                     <i class="fas fa-sign-out-alt me-2"></i>Đăng xuất

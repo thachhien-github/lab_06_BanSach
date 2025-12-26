@@ -3,6 +3,7 @@ using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
+using System.Web.UI.WebControls;
 
 namespace lab_06_BanSach
 {
@@ -16,7 +17,17 @@ namespace lab_06_BanSach
                 // Nếu đã đăng nhập: Hiện vùng Chào khách, ẩn nút Đăng nhập
                 phAnonymous.Visible = false;
                 phLoggedIn.Visible = true;
-                ltrTenKH.Text = Session["HoTenKH"].ToString();
+
+                // Kiểm tra xem có phải là Admin hay không để hiển thị tên đặc biệt
+                string hoTen = Session["HoTenKH"].ToString();
+                if (Session["TenDN"].ToString().ToLower() == "admin")
+                {
+                    ltrTenKH.Text = hoTen + " (Admin)";
+                }
+                else
+                {
+                    ltrTenKH.Text = hoTen;
+                }
             }
             else
             {
@@ -29,28 +40,35 @@ namespace lab_06_BanSach
         protected void btnSearch_Click(object sender, EventArgs e)
         {
             string keyword = txtSearch.Text.Trim();
-            // Chuyển hướng về trang chủ kèm từ khóa tìm kiếm
-            Response.Redirect("Default.aspx?search=" + Server.UrlEncode(keyword));
+            if (!string.IsNullOrEmpty(keyword))
+            {
+                // Chuyển hướng về trang chủ kèm từ khóa tìm kiếm
+                Response.Redirect("Default.aspx?search=" + Server.UrlEncode(keyword));
+            }
         }
 
+        // Hàm được gọi từ giao diện .aspx để hiển thị số lượng trên Badge giỏ hàng
         public string GetCartCount()
         {
             if (Session["GioHang"] != null)
             {
                 DataTable dt = (DataTable)Session["GioHang"];
-                // Sử dụng LINQ để tính tổng cột SoLuong
-                return dt.AsEnumerable().Sum(row => row.Field<int>("SoLuong")).ToString();
+                if (dt.Rows.Count > 0)
+                {
+                    // Sử dụng LINQ để tính tổng cột SoLuong trong DataTable
+                    int total = dt.AsEnumerable().Sum(row => row.Field<int>("SoLuong"));
+                    return total.ToString();
+                }
             }
             return "0";
         }
 
-        // Thêm sự kiện xử lý Đăng xuất
+        // Xử lý khi nhấn nút Đăng xuất
         protected void lbtnLogout_Click(object sender, EventArgs e)
         {
-            // Xóa các Session liên quan đến người dùng
-            Session.Remove("TenDN");
-            Session.Remove("HoTenKH");
-            Session.Remove("MaKH");
+            // Hủy toàn bộ Session (MaKH, TenDN, HoTenKH, GioHang...)
+            Session.Abandon();
+            Session.Clear();
 
             // Chuyển hướng về trang chủ sau khi thoát
             Response.Redirect("Default.aspx");

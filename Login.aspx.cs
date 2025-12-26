@@ -26,7 +26,7 @@ namespace lab_06_BanSach
 
             using (SqlConnection con = new SqlConnection(strCon))
             {
-                // Truy vấn dựa trên cấu trúc bảng KhachHang của bro
+                // Truy vấn lấy đầy đủ thông tin cần thiết
                 string sql = "SELECT MaKH, HoTenKH FROM KhachHang WHERE TenDN = @TenDN AND Matkhau = @Matkhau";
                 SqlCommand cmd = new SqlCommand(sql, con);
                 cmd.Parameters.AddWithValue("@TenDN", tenDN);
@@ -34,14 +34,27 @@ namespace lab_06_BanSach
 
                 con.Open();
                 SqlDataReader dr = cmd.ExecuteReader();
+
                 if (dr.Read())
                 {
-                    // Đăng nhập thành công -> Lưu Session
+                    // --- ĐĂNG NHẬP THÀNH CÔNG ---
+
+                    // 1. Lưu các Session quan trọng
                     Session["MaKH"] = dr["MaKH"].ToString();
-                    Session["HoTenKH"] = dr["HoTenKH"].ToString();
+                    Session["HoTenKH"] = dr["HoTenKH"].ToString(); // Site.Master dùng cái này để hiện tên
                     Session["TenDN"] = tenDN;
 
-                    // Kiểm tra xem khách hàng có đang dở dang ở trang Giỏ hàng không
+                    // 2. PHÂN QUYỀN ADMIN
+                    if (tenDN.ToLower() == "admin")
+                    {
+                        Session["IsAdmin"] = true;
+                        // Chuyển hướng ngay vào khu vực quản trị
+                        Response.Redirect("~/Admin/Dashboard.aspx");
+                        return;
+                    }
+
+                    // 3. ĐIỀU HƯỚNG CHO KHÁCH HÀNG
+                    // Nếu có ReturnUrl (ví dụ từ Giỏ hàng qua) thì quay lại đó, không thì về Home
                     if (Request.QueryString["ReturnUrl"] != null)
                     {
                         Response.Redirect(Request.QueryString["ReturnUrl"]);
@@ -53,7 +66,8 @@ namespace lab_06_BanSach
                 }
                 else
                 {
-                    lblError.Text = "Tên đăng nhập hoặc mật khẩu không đúng!";
+                    // --- ĐĂNG NHẬP THẤT BẠI ---
+                    lblError.Text = "Tên đăng nhập hoặc mật khẩu không chính xác!";
                     lblError.Visible = true;
                 }
             }
