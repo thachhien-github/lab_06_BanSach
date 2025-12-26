@@ -1,0 +1,115 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="lab_06_BanSach.Site" %>
+
+<!DOCTYPE html>
+<html>
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>BookStore Pro</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8f9fa; }
+        .navbar-custom { background-color: #2c3e50; border-bottom: 4px solid #F98189; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .navbar-brand { font-size: 1.5rem; letter-spacing: 1px; }
+        
+        /* Badge giỏ hàng chuẩn */
+        .cart-badge { 
+            background-color: #F98189; color: white; border-radius: 50%; 
+            padding: 3px 7px; font-size: 10px; position: absolute; top: 0; right: 0;
+            transform: translate(30%, -30%); border: 2px solid #2c3e50;
+        }
+
+        /* Search box linh hoạt */
+        .search-box { min-width: 180px; max-width: 300px; }
+        .form-control:focus { box-shadow: none; border-color: #F98189; }
+
+        /* Chống xuống hàng cho text */
+        .text-nowrap { white-space: nowrap !important; }
+
+        .footer { background: #fff; padding: 30px 0; margin-top: 50px; border-top: 1px solid #dee2e6; }
+        .footer-social a { color: #6c757d; margin: 0 10px; font-size: 1.2rem; transition: 0.3s; }
+        .footer-social a:hover { color: #F98189; }
+    </style>
+    <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server" defaultbutton="btnSearch">
+        <asp:SqlDataSource ID="dsChuDe" runat="server" 
+            ConnectionString="<%$ ConnectionStrings:BookStoreDBConnectionString %>" 
+            SelectCommand="SELECT * FROM ChuDe"></asp:SqlDataSource>
+
+        <nav class="navbar navbar-expand-lg navbar-dark navbar-custom sticky-top">
+            <div class="container">
+                <a class="navbar-brand fw-bold text-warning" href="Default.aspx">
+                    <i class="fas fa-book-open me-2"></i>BOOKSTORE
+                </a>
+                
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="Default.aspx"><i class="fas fa-home me-1"></i>Trang chủ</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                                <i class="fas fa-list me-1"></i>Danh mục
+                            </a>
+                            <ul class="dropdown-menu shadow">
+                                <asp:Repeater ID="rptMenu" runat="server" DataSourceID="dsChuDe">
+                                    <ItemTemplate>
+                                        <li><a class="dropdown-item" href='SachTheoChuDe.aspx?MaCD=<%# Eval("MaCD") %>'>
+                                            <%# Eval("Tenchude") %>
+                                        </a></li>
+                                    </ItemTemplate>
+                                </asp:Repeater>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <div class="d-flex align-items-center flex-nowrap ms-auto">
+                        <div class="input-group input-group-sm search-box d-none d-sm-flex">
+                            <asp:TextBox ID="txtSearch" runat="server" CssClass="form-control" placeholder="Tìm kiếm..."></asp:TextBox>
+                            <asp:LinkButton ID="btnSearch" runat="server" CssClass="btn btn-danger" OnClick="btnSearch_Click">
+                                <i class="fas fa-search"></i>
+                            </asp:LinkButton>
+                        </div>
+
+                        <a href="GioHang.aspx" class="nav-link text-white px-3 position-relative">
+                            <i class="fas fa-shopping-cart fa-lg"></i>
+                            <span class="cart-badge"><%= GetCartCount() %></span>
+                        </a>
+
+                        <a href="Login.aspx" class="btn btn-sm btn-outline-warning text-nowrap ms-1 d-flex align-items-center rounded-pill px-3">
+                            <i class="fas fa-user-circle me-1"></i> Đăng nhập
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container mt-4 min-vh-100">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>
+        </div>
+
+        <footer class="footer">
+            <div class="container text-center">
+                <div class="footer-social mb-3">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+                <p class="mb-1 fw-bold">BOOKSTORE ONLINE PRO</p>
+                <p class="text-muted small">© 2024 - Server: <span class="badge bg-secondary">THACHHIEN</span></p>
+            </div>
+        </footer>
+    </form>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
