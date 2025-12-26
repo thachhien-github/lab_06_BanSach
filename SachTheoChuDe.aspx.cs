@@ -55,7 +55,7 @@ namespace lab_06_BanSach
                 PagedDataSource pds = new PagedDataSource();
                 pds.DataSource = dt.DefaultView;
                 pds.AllowPaging = true;
-                pds.PageSize = 6; // Hiển thị 6 cuốn trên mỗi trang
+                pds.PageSize = 8; // Hiển thị 6 cuốn trên mỗi trang
                 pds.CurrentPageIndex = pageIndex;
 
                 // Bind dữ liệu vào Repeater chính (nhớ ID phải khớp với file .aspx)

@@ -140,30 +140,84 @@
                 box-shadow: 0 4px 10px rgba(255, 206, 84, 0.4);
             }
 
-        /* 7. Footer hiện đại */
+        /* --- PHẦN FOOTER MỚI --- */
         .footer {
-            background: #ffffff;
-            border-top: 1px solid #eee;
-            padding: 40px 0;
+            background: #1a2a6c; /* Đồng bộ với màu Navbar */
+            color: #ecf0f1;
+            padding: 60px 0 20px;
+            margin-top: 50px;
+        }
+
+        .footer-title {
+            color: #ff7e5f; /* Màu Coral làm điểm nhấn */
+            font-weight: 700;
+            margin-bottom: 25px;
+            position: relative;
+            text-transform: uppercase;
+            font-size: 1.1rem;
+        }
+
+            .footer-title::after {
+                content: '';
+                position: absolute;
+                bottom: -8px;
+                left: 0;
+                width: 40px;
+                height: 2px;
+                background: #ff7e5f;
+            }
+
+        .footer-link {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+            .footer-link:hover {
+                color: #ff7e5f;
+                padding-left: 8px;
+            }
+
+        .footer-info i {
+            width: 25px;
+            color: #ff7e5f;
         }
 
         .footer-social a {
             display: inline-block;
-            width: 40px;
-            height: 40px;
-            line-height: 40px;
-            background: #f8f9fa;
+            width: 38px;
+            height: 38px;
+            background: rgba(255,255,255,0.1);
+            color: white;
             border-radius: 50%;
-            color: #555;
-            margin: 0 8px;
-            transition: all 0.3s;
+            text-align: center;
+            line-height: 38px;
+            margin-right: 10px;
+            transition: 0.3s;
         }
 
             .footer-social a:hover {
                 background: #ff7e5f;
-                color: white;
-                transform: translateY(-3px);
+                transform: translateY(-5px);
             }
+
+        .map-container {
+            border-radius: 12px;
+            overflow: hidden;
+            border: 2px solid rgba(255,255,255,0.1);
+        }
+
+        .copyright {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            margin-top: 40px;
+        }
+
+        .min-vh-100 {
+            min-height: 70vh !important;
+        }
 
         /* 8. Utility */
         .text-nowrap {
@@ -287,15 +341,49 @@
         </div>
 
         <footer class="footer">
-            <div class="container text-center">
-                <div class="footer-social mb-3">
-                    <a href="#"><i class="fab fa-facebook"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
+            <div class="container">
+                <div class="row g-4">
+                    <div class="col-lg-4 col-md-6">
+                        <h5 class="footer-title">Về BookStore Pro</h5>
+                        <p class="small mb-4">Chúng tôi cung cấp hàng ngàn đầu sách đa dạng từ giáo khoa đến tiểu thuyết với chất lượng tốt nhất và dịch vụ giao hàng nhanh chóng.</p>
+                        <div class="footer-social">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-tiktok"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-2 col-md-6 ps-lg-5">
+                        <h5 class="footer-title">Khám phá</h5>
+                        <a href="Default.aspx" class="footer-link small">Trang chủ</a>
+                        <a href="GioHang.aspx" class="footer-link small">Giỏ hàng</a>
+                        <a href="LichSuDonHang.aspx" class="footer-link small">Lịch sử đơn hàng</a>
+                        <a href="Profile.aspx" class="footer-link small">Tài khoản</a>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 footer-info">
+                        <h5 class="footer-title">Thông tin liên hệ</h5>
+                        <p class="small mb-2"><i class="fas fa-map-marker-alt"></i>52/18, Nguyễn Sỹ Sách, P. Tân Sơn, Tp. HCM</p>
+                        <p class="small mb-2"><i class="fas fa-phone-alt"></i>0906.891.704</p>
+                        <p class="small mb-2"><i class="fas fa-envelope"></i>bookstore@gmail.com</p>
+                        <p class="small mb-2"><i class="fas fa-clock"></i>Mở cửa: 8:00 - 21:00</p>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6">
+                        <h5 class="footer-title">Vị trí cửa hàng</h5>
+                        <div class="map-container shadow-sm">
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.103233866297!2d106.6329775!3d10.8033932!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3175294522814b79%3A0x6a13d7890e0c3d9a!2zNTIvMTggTmd1eeG7hW4gU8G7uSBTw6FjaCwgVMOibiBTxqFuIE5owrxsLCBUw6JuIELDrG5oLCBI4buTIENow60gTWluaA!5e0!3m2!1svi!2s!4v1700000000000"
+                                width="100%" height="150" style="border: 0;" allowfullscreen="" loading="lazy"></iframe>
+                        </div>
+                    </div>
                 </div>
-                <p class="mb-1 fw-bold">BOOKSTORE ONLINE PRO</p>
-                <p class="text-muted small">© 2024 - Server: <span class="badge bg-secondary">THACHHIEN</span></p>
+
+                <div class="copyright text-center">
+                    <p class="mb-1 fw-bold small">© 2025 BOOKSTORE ONLINE PRO - DESIGN BY THACHHIEN</p>
+                    <p class="text-muted" style="font-size: 0.7rem;">Server: <span class="badge bg-secondary">ASP.NET CORE 2025</span></p>
+                </div>
             </div>
         </footer>
     </form>

@@ -1,6 +1,61 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ChiTietDonHang.aspx.cs" Inherits="lab_06_BanSach.ChiTietDonHang" %>
+﻿<%@ Page Title="Chi Tiết Đơn Hàng" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ChiTietDonHang.aspx.cs" Inherits="lab_06_BanSach.ChiTietDonHang" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    <style>
+        /* Giữ đúng style tiêu đề của trang Default */
+        .text-primary {
+            color: #2c3e50 !important; /* Đổi xanh mặc định sang Navy */
+            position: relative;
+            padding-bottom: 5px;
+        }
+
+        /* Đồng bộ Breadcrumb */
+        .breadcrumb-item a {
+            color: #ff7e5f;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* Card và Bảng */
+        .card {
+            border-radius: 15px !important;
+            overflow: hidden;
+        }
+
+        .table thead th {
+            background-color: #f8f9fa;
+            color: #2c3e50;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            border-top: none;
+            padding: 15px;
+        }
+
+        .table td {
+            padding: 15px;
+        }
+
+        /* Hiệu ứng ảnh giống Default */
+        .card-body img {
+            transition: transform 0.3s ease;
+        }
+
+        .card-body tr:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Màu sắc giá tiền */
+        .text-danger {
+            color: #e74c3c !important;
+        }
+
+        /* Footer tổng tiền */
+        .card-footer {
+            background-color: #ffffff !important;
+            border-top: 2px dashed #f1f1f1 !important;
+        }
+    </style>
+
     <div class="container mt-4">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
